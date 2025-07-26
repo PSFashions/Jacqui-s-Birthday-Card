@@ -580,6 +580,16 @@
         .photo-grid {
             grid-template-columns: 1fr;
         }
+        
+    /* Add this to fix the Birthday Queen section layout */
+    .birthday-girl-showcase {
+        grid-column: 1 / -1; /* Make it span all columns */
+        width: 100%;
+        margin: 40px 0;
+        clear: both; /* Ensure it clears any floating elements */
+        display: block; /* Force block display */
+    }
+
         }
     </style>
 </head>
@@ -600,7 +610,6 @@
                 <div class="video-frame" id="video1">
                     <video autoplay muted loop playsinline>
                         <source src="images/memory-video-1.mp4" type="video/mp4">
-                        <div class="video-fallback">📹 Amazing Memory!</div>
                     </video>
                     <div class="video-overlay">You're so Beautiful! 🎬</div>
                 </div>
@@ -637,13 +646,14 @@
                 </div>
 
                 <div class="video-frame" id="video2">
-    <video autoplay muted loop playsinline>
-        <source src="images/snap-avatar-kiss.mp4" type="video/mp4">
-    </video>
-    <div class="video-overlay">Concert Excitement! 🎤</div>
-</div>
+                    <video autoplay muted loop playsinline>
+                        <source src="images/snap-avatar-kiss.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">Concert Excitement! 🎤</div>
+                </div>
+            </div> <!-- Close photo-grid here -->
 
-            <!-- Enhanced Jacqui Photo Showcase -->
+            <!-- Enhanced Jacqui Photo Showcase - MOVED OUTSIDE photo-grid -->
             <div class="birthday-girl-showcase">
                 <div class="showcase-title">✨ The Birthday Queen ✨</div>
                 <div class="enhanced-photo-frame">
