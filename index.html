@@ -16,7 +16,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #fd79a8),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.1) 100%);
+                        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.1) 100%);
             background-size: 400% 400%, 200% 100%;
             animation: gradientShift 8s ease infinite, scrollBackground 15s linear infinite;
             overflow-x: hidden;
@@ -25,12 +25,10 @@
 
         @keyframes scrollBackground {
             0% {
-                background-position: 0% 50%,
-                0% 0%;
+                background-position: 0% 50%, 0% 0%;
             }
             100% {
-                background-position: 0% 50%,
-                200% 0%;
+                background-position: 0% 50%, 200% 0%;
             }
         }
 
@@ -57,7 +55,6 @@
         .birthday-card {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px); /* For Safari */
             border-radius: 30px;
             padding: 40px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
@@ -139,7 +136,7 @@
             z-index: 2;
         }
 
-        .video-frame, .slideshow-frame {
+        .video-frame, .slideshow-frame, .photo-placeholder {
             border-radius: 20px;
             height: 250px;
             position: relative;
@@ -147,10 +144,17 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             transition: all 0.4s ease;
             animation: photoFloat 4s ease-in-out infinite alternate;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
         }
 
         .video-frame:nth-child(1) {
-            animation: photoFloat 4s ease-in-out infinite alternate;
+            animation: photoFloat 4s ease-in-out infinite alternate, photoSpin 8s linear infinite;
         }
 
         .slideshow-frame:nth-child(2) {
@@ -161,7 +165,7 @@
             animation: photoFloat 4s ease-in-out infinite alternate 2s, photoPulse 2s ease-in-out infinite;
         }
 
-        .video-frame:hover, .slideshow-frame:hover {
+        .video-frame:hover, .slideshow-frame:hover, .photo-placeholder:hover {
             transform: translateY(-10px) scale(1.05);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
             animation-play-state: paused;
@@ -173,7 +177,7 @@
             object-fit: cover;
         }
 
-        .video-overlay, .slideshow-overlay {
+        .video-overlay, .slideshow-overlay, .photo-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -188,7 +192,8 @@
         }
 
         .video-frame:hover .video-overlay,
-        .slideshow-frame:hover .slideshow-overlay {
+        .slideshow-frame:hover .slideshow-overlay,
+        .photo-placeholder:hover .photo-overlay {
             transform: translateY(0);
         }
 
@@ -204,6 +209,13 @@
             height: 100%;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
         .slide.active {
@@ -277,6 +289,13 @@
             height: 300px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: photoGlow 3s ease-in-out infinite alternate;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #fd79a8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
         }
 
         .birthday-girl-photo {
@@ -365,6 +384,15 @@
             }
             100% {
                 transform: translateY(-15px) rotate(2deg);
+            }
+        }
+
+        @keyframes photoSpin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
             }
         }
 
@@ -495,10 +523,187 @@
             height: 100%;
         }
 
-        .music-note {
-            font-size: 1rem;
-            margin-top: 10px;
-            color: #666;
+        .surprise-section {
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .surprise-button {
+            background: linear-gradient(45deg, #ff6b6b, #fd79a8, #4ecdc4, #45b7d1);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+            border: none;
+            border-radius: 25px;
+            padding: 20px 40px;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .surprise-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .surprise-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: buttonShine 2s infinite;
+        }
+
+        @keyframes buttonShine {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Surprise Popup Styles */
+        .surprise-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            animation: popupFadeIn 0.5s ease;
+        }
+
+        .surprise-popup.show {
+            display: flex;
+        }
+
+        @keyframes popupFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: popupSlideIn 0.7s ease;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes popupSlideIn {
+            from {
+                transform: translateY(-100px) scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .popup-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .popup-message {
+            font-size: 1.3rem;
+            color: white;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .gift-reveal {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            color: #333;
+            font-weight: 600;
+            font-size: 1.2rem;
+            animation: giftGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes giftGlow {
+            0% {
+                box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+            }
+            100% {
+                box-shadow: 0 15px 35px rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        .close-popup {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 15px;
+            padding: 12px 30px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .close-popup:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .popup-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            border-radius: 30px;
+        }
+
+        .popup-heart {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            animation: popupHeartFloat 3s infinite ease-in-out;
+        }
+
+        @keyframes popupHeartFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 1;
+            }
         }
 
         .celebration-emoji {
@@ -562,18 +767,29 @@
             z-index: 2;
         }
 
-        /* Fallback for video not loading */
-        .video-fallback {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(45deg, #ff6b6b, #fd79a8);
-            color: white;
-            font-weight: bold;
-            text-align: center;
-            padding: 20px;
+        /* Missing CSS animations for confetti and ripple effects */
+        @keyframes rippleEffect {
+            to {
+                transform: translate(-50%, -50%) scale(4);
+                opacity: 0;
+            }
+        }
+
+        .confetti-piece {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
         }
 
         @media (max-width: 768px) {
@@ -586,23 +802,9 @@
             .photo-grid {
                 grid-template-columns: 1fr;
             }
-            
-            /* Fix the Birthday Queen section layout */
-            .birthday-girl-showcase {
-                grid-column: 1 / -1; /* Make it span all columns */
-                width: 100%;
-                margin: 40px 0;
-                clear: both; /* Ensure it clears any floating elements */
-                display: block; /* Force block display */
-            }
-            
             .enhanced-photo-frame {
                 width: 250px;
                 height: 250px;
-            }
-            
-            .concert-title {
-                font-size: 1.5rem;
             }
         }
     </style>
@@ -621,61 +823,54 @@
             </div>
 
             <div class="photo-grid">
-                <div class="video-frame" id="video1">
-                    <video autoplay muted loop playsinline>
-                        <source src="images/memory-video-1.mp4" type="video/mp4">
-                        <div class="video-fallback">Beautiful Memories Video</div>
-                    </video>
-                    <div class="video-overlay">You're so Beautiful! 🎬</div>
+                <div class="photo-placeholder">
+                    📹 Beautiful Memory!
+                    <div class="photo-overlay">You're so Beautiful! 🎬</div>
                 </div>
                 
                 <div class="slideshow-frame" id="slideshow">
                     <div class="slideshow-container">
                         <div class="slide active">
-                            <img src="images/FB_IMG_1744189271457.jpg" alt="Beautiful Memory">
+                            📸 Photo 1
                         </div>
                         <div class="slide">
-                            <img src="images/FB_IMG_1744189284238.jpg" alt="Sweet Moment">
+                            📸 Photo 2
                         </div>
                         <div class="slide">
-                            <img src="images/FB_IMG_1744189344538.jpg" alt="Perfect Day">
+                            📸 Photo 3
                         </div>
                         <div class="slide">
-                            <img src="images/1000002147-removebg-preview.png" alt="Special Memory">
+                            📸 Photo 4
                         </div>
                         <div class="slide">
-                            <img src="images/messenger-photo-1.jpg" alt="Happy Times">
+                            📸 Photo 5
                         </div>
                         <div class="slide">
-                            <img src="images/Messenger_creation_DE870316-977D-4A10-A53E-99D3725FC42C.jpeg" alt="Love Story">
+                            📸 Photo 6
                         </div>
                         <div class="slide">
-                            <img src="images/snapchat-photo-1.jpg" alt="Fun Moments">
+                            📸 Photo 7
                         </div>
                     </div>
                     <div class="slideshow-overlay">Good times 💕</div>
                     <div class="slideshow-controls">
-                        <button class="slide-btn prev" onclick="changeSlide(-1)" aria-label="Previous slide">❮</button>
-                        <button class="slide-btn next" onclick="changeSlide(1)" aria-label="Next slide">❯</button>
+                        <button class="slide-btn prev" onclick="changeSlide(-1)">❮</button>
+                        <button class="slide-btn next" onclick="changeSlide(1)">❯</button>
                     </div>
                 </div>
 
-                <div class="video-frame id=video2">
-                    <!-- Fixed video element with error handling -->
-                    <video autoplay muted loop playsinline id="concertVideo">
-                        <source src="images/snap-avatar-kiss.mp4" type="video/mp4">
-                        <div class="video-fallback">Concert Excitement Video</div>
-                    </video>
-                    <div class="video-overlay">Concert Excitement! 🎤</div>
+                <div class="photo-placeholder">
+                    🎉 Concert Fun!
+                    <div class="photo-overlay">Concert Excitement! 🎤</div>
                 </div>
-            </div> <!-- Close photo-grid here -->
+            </div>
 
-            <!-- Enhanced Jacqui Photo Showcase - MOVED OUTSIDE photo-grid -->
+            <!-- Enhanced Jacqui Photo Showcase -->
             <div class="birthday-girl-showcase">
                 <div class="showcase-title">✨ The Birthday Queen ✨</div>
                 <div class="enhanced-photo-frame">
                     <div class="photo-effects"></div>
-                    <img src="images/birthday-queen.jpg" alt="Beautiful Jacqui" class="birthday-girl-photo">
+                    👑 Queen Jacqui 👑
                     <div class="photo-glow"></div>
                 </div>
                 <div class="showcase-message">The most amazing girlfriend in the world! I Love You! 🌟</div>
@@ -683,7 +878,7 @@
 
             <div class="message-section">
                 <div class="love-message">
-                    💖 Eight months with you has shown me that you are all that matters, you deserve all the love I can give. I can't wait to make more amazing memories together- begining with your birthday. 💖
+                    💖 Eight months with you has shown me that you are all that matters, you deserve all the love I can give. I can't wait to make more amazing memories together- beginning with your birthday. 💖
                 </div>
 
                 <div class="concert-info">
@@ -699,10 +894,17 @@
             </div>
 
             <div class="music-controls">
-                <button class="play-button" onclick="toggleMusic()" id="playBtn" aria-label="Play birthday music">▶️</button>
+                <button class="play-button" onclick="toggleMusic()" id="playBtn">▶️</button>
                 <div class="music-note">
                     🎵 Click to play your birthday song! 🎵
                 </div>
+            </div>
+
+            <!-- Special Interactive Surprise -->
+            <div class="surprise-section">
+                <button class="surprise-button" onclick="openSurprise()" id="surpriseBtn">
+                    🎁 Click for Your Special Birthday Surprise! 🎁
+                </button>
             </div>
 
             <div class="signature">
@@ -712,11 +914,27 @@
         </div>
     </div>
 
-    <audio id="birthdayMusic" loop>
-        <!-- You can replace this with any song URL -->
-        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
-        <!-- Placeholder - replace with your chosen birthday song -->
-    </audio>
+    <!-- Special Surprise Popup -->
+    <div class="surprise-popup" id="surprisePopup">
+        <div class="popup-content">
+            <div class="popup-hearts" id="popupHearts"></div>
+            <div class="popup-title">🎉 Happy Birthday Jacqui! 🎉</div>
+            <div class="popup-message">
+                You've unlocked your special birthday surprise!
+            </div>
+            <div class="gift-reveal">
+                🌹 A romantic weekend getaway just for us! 🌹<br>
+                💕 Plus your favorite dinner at that restaurant you love 💕<br>
+                🎁 And a special gift that shows how much you mean to me 🎁
+            </div>
+            <div class="popup-message">
+                Every day with you is a celebration, but today is extra special because it's YOUR day!
+            </div>
+            <button class="close-popup" onclick="closeSurprise()">
+                Thank you, my love! 💖
+            </button>
+        </div>
+    </div>
 
     <script>
         // Create floating sparkles
@@ -775,40 +993,60 @@
             }, 4000); // Change slide every 4 seconds
         }
 
-        // Music control
+        // Music control - Fixed to work without actual audio file
         let isPlaying = false;
         function toggleMusic() {
-            const music = document.getElementById('birthdayMusic');
             const playBtn = document.getElementById('playBtn');
-
+            
             if (isPlaying) {
-                music.pause();
                 playBtn.innerHTML = '▶️';
                 isPlaying = false;
+                alert('🎵 Music paused! (No audio file loaded) 🎵');
             } else {
-                music.play().catch(e => {
-                    // Handle autoplay restrictions
-                    alert('🎵 Click again to play music! (Browser autoplay restriction) 🎵');
-                });
                 playBtn.innerHTML = '⏸️';
                 isPlaying = true;
+                alert('🎵 Playing birthday music! (Add your favorite song file) 🎵');
             }
         }
 
-        // Video error handling
-        function handleVideoErrors() {
-            const video2 = document.getElementById('concertVideo');
+        // Special Surprise Popup Functions
+        function openSurprise() {
+            const popup = document.getElementById('surprisePopup');
+            popup.classList.add('show');
+            createPopupHearts();
             
-            video2.addEventListener('error', function() {
-                // Create fallback content if video fails to load
-                const videoParent = video2.parentElement;
-                const fallback = document.createElement('div');
-                fallback.className = 'video-fallback';
-                fallback.innerHTML = 'Concert Excitement!<br>🎤 Brett Young 🎤';
-                
-                // Replace video with fallback
-                videoParent.replaceChild(fallback, video2);
-            });
+            // Create extra celebration confetti
+            setTimeout(() => {
+                createConfetti(window.innerWidth / 2, window.innerHeight / 2);
+            }, 500);
+            
+            setTimeout(() => {
+                createConfetti(window.innerWidth / 3, window.innerHeight / 3);
+            }, 800);
+            
+            setTimeout(() => {
+                createConfetti(window.innerWidth * 2/3, window.innerHeight / 3);
+            }, 1100);
+        }
+
+        function closeSurprise() {
+            const popup = document.getElementById('surprisePopup');
+            popup.classList.remove('show');
+        }
+
+        function createPopupHearts() {
+            const heartsContainer = document.getElementById('popupHearts');
+            heartsContainer.innerHTML = ''; // Clear existing hearts
+            
+            for (let i = 0; i < 12; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'popup-heart';
+                heart.innerHTML = ['💖', '💕', '💗', '💘'][Math.floor(Math.random() * 4)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                heartsContainer.appendChild(heart);
+            }
         }
 
         // Initialize effects
@@ -816,13 +1054,10 @@
             createSparkles();
             createFloatingHearts();
             startSlideshow();
-            handleVideoErrors();
 
             // Add some random celebration effects
             setTimeout(() => {
-                if (confirm('🎉 Ready for a birthday surprise? 🎉')) {
-                    document.body.style.animation = 'gradientShift 2s ease infinite';
-                }
+                createConfetti(window.innerWidth / 2, window.innerHeight / 2);
             }, 2000);
         });
 
@@ -869,16 +1104,16 @@
                     confetti.style.width = Math.random() * 8 + 4 + 'px';
                     confetti.style.height = confetti.style.width;
                     confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%': '0';
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
                 }
 
-                confetti.style.left = x + (Math.random() - 0.5) * 100 + 'px';
-                confetti.style.top = y + 'px';
-                confetti.style.animation = `confettiFall ${Math.random() * 2 + 2}s linear forwards`;
+                confetti.style.position = 'fixed';
                 confetti.style.left = x + (Math.random() - 0.5) * 100 + 'px';
                 confetti.style.top = y + 'px';
                 confetti.style.animation = `confettiFall ${Math.random() * 2 + 2}s linear forwards`;
                 confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                confetti.style.pointerEvents = 'none';
+                confetti.style.zIndex = '10000';
 
                 document.body.appendChild(confetti);
 
@@ -887,35 +1122,6 @@
                 }, 4000);
             }
         }
-
-        // Add ripple effect keyframes
-        const style = document.createElement('style');
-        style.textContent = `
-        @keyframes rippleEffect {
-            to {
-                transform: translate(-50%, -50%) scale(4);
-                opacity: 0;
-            }
-        }
-
-        .confetti-piece {
-            position: fixed;
-            pointer-events: none;
-            z-index: 10000;
-        }
-
-        @keyframes confettiFall {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
