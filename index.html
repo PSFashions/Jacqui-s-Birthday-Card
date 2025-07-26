@@ -1,4 +1,4 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,588 +8,602 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
 
         * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-        font-family: 'Poppins', sans-serif;
-        background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #fd79a8),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.1) 100%);
-        background-size: 400% 400%, 200% 100%;
-        animation: gradientShift 8s ease infinite, scrollBackground 15s linear infinite;
-        overflow-x: hidden;
-        min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #fd79a8),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.1) 100%);
+            background-size: 400% 400%, 200% 100%;
+            animation: gradientShift 8s ease infinite, scrollBackground 15s linear infinite;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
 
         @keyframes scrollBackground {
-        0% {
-            background-position: 0% 50%,
-            0% 0%;
-        }
-        100% {
-            background-position: 0% 50%,
-            200% 0%;
-        }
+            0% {
+                background-position: 0% 50%,
+                0% 0%;
+            }
+            100% {
+                background-position: 0% 50%,
+                200% 0%;
+            }
         }
 
         @keyframes gradientShift {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .card-container {
-        max-width: 900px;
-        margin: 20px auto;
-        padding: 20px;
-        position: relative;
-        z-index: 1;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .birthday-card {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(20px);
-        border-radius: 30px;
-        padding: 40px;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        position: relative;
-        overflow: hidden;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px); /* For Safari */
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
         .sparkles {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
         }
 
         .sparkle {
-        position: absolute;
-        background: #fff;
-        border-radius: 50%;
-        animation: sparkleFloat 3s infinite ease-in-out;
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: sparkleFloat 3s infinite ease-in-out;
         }
 
         @keyframes sparkleFloat {
-        0%, 100% {
-            transform: translateY(0px) rotate(0deg);
-            opacity: 0;
-        }
-        50% {
-            transform: translateY(-20px) rotate(180deg);
-            opacity: 1;
-        }
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 1;
+            }
         }
 
         .main-title {
-        text-align: center;
-        font-size: 4rem;
-        font-weight: 800;
-        background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #fd79a8);
-        background-size: 400% 400%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: gradientShift 3s ease infinite, bounce 2s infinite;
-        margin-bottom: 20px;
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        position: relative;
-        z-index: 2;
+            text-align: center;
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #fd79a8);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite, bounce 2s infinite;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
         }
 
         @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% {
-            transform: translateY(0);
-        }
-        40% {
-            transform: translateY(-10px);
-        }
-        60% {
-            transform: translateY(-5px);
-        }
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
 
         .subtitle {
-        text-align: center;
-        font-size: 1.5rem;
-        color: #333;
-        margin-bottom: 30px;
-        font-weight: 600;
-        position: relative;
-        z-index: 2;
+            text-align: center;
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
         }
 
         .photo-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        margin: 30px 0;
-        position: relative;
-        z-index: 2;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+            position: relative;
+            z-index: 2;
         }
 
         .video-frame, .slideshow-frame {
-        border-radius: 20px;
-        height: 250px;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        transition: all 0.4s ease;
-        animation: photoFloat 4s ease-in-out infinite alternate;
+            border-radius: 20px;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            animation: photoFloat 4s ease-in-out infinite alternate;
         }
 
         .video-frame:nth-child(1) {
-        animation: photoFloat 4s ease-in-out infinite alternate, photoSpin 8s linear infinite;
+            animation: photoFloat 4s ease-in-out infinite alternate;
         }
 
         .slideshow-frame:nth-child(2) {
-        animation: photoFloat 4s ease-in-out infinite alternate 1s, photoWobble 3s ease-in-out infinite;
+            animation: photoFloat 4s ease-in-out infinite alternate 1s, photoWobble 3s ease-in-out infinite;
         }
 
         .video-frame:nth-child(3) {
-        animation: photoFloat 4s ease-in-out infinite alternate 2s, photoPulse 2s ease-in-out infinite;
+            animation: photoFloat 4s ease-in-out infinite alternate 2s, photoPulse 2s ease-in-out infinite;
         }
 
         .video-frame:hover, .slideshow-frame:hover {
-        transform: translateY(-10px) scale(1.05);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-        animation-play-state: paused;
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            animation-play-state: paused;
         }
 
         .video-frame video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .video-overlay, .slideshow-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-        color: white;
-        padding: 15px;
-        font-weight: 600;
-        text-align: center;
-        transform: translateY(100%);
-        transition: transform 0.3s ease;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 15px;
+            font-weight: 600;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
         }
 
         .video-frame:hover .video-overlay,
         .slideshow-frame:hover .slideshow-overlay {
-        transform: translateY(0);
+            transform: translateY(0);
         }
 
         .slideshow-container {
-        position: relative;
-        width: 100%;
-        height: 100%;
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
 
         .slide {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
 
         .slide.active {
-        opacity: 1;
+            opacity: 1;
         }
 
         .slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .slideshow-controls {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 15px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .slideshow-frame:hover .slideshow-controls {
-        opacity: 1;
+            opacity: 1;
         }
 
         .slide-btn {
-        background: rgba(255, 255, 255, 0.8);
-        border: none;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .slide-btn:hover {
-        background: rgba(255, 255, 255, 1);
-        transform: scale(1.1);
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
         }
 
         .birthday-girl-showcase {
-        text-align: center;
-        margin: 40px 0;
-        position: relative;
-        z-index: 2;
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+            z-index: 2;
         }
 
         .showcase-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #fd79a8);
-        background-size: 400% 400%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: gradientShift 3s ease infinite;
-        margin-bottom: 20px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #fd79a8);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            margin-bottom: 20px;
         }
 
         .enhanced-photo-frame {
-        position: relative;
-        display: inline-block;
-        border-radius: 50%;
-        overflow: hidden;
-        width: 300px;
-        height: 300px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        animation: photoGlow 3s ease-in-out infinite alternate;
+            position: relative;
+            display: inline-block;
+            border-radius: 50%;
+            overflow: hidden;
+            width: 300px;
+            height: 300px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: photoGlow 3s ease-in-out infinite alternate;
         }
 
         .birthday-girl-photo {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 50%;
-        transition: transform 0.3s ease;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
         }
 
         .enhanced-photo-frame:hover .birthday-girl-photo {
-        transform: scale(1.1);
+            transform: scale(1.1);
         }
 
         .photo-effects {
-        position: absolute;
-        top: -20px;
-        left: -20px;
-        right: -20px;
-        bottom: -20px;
-        border: 3px solid transparent;
-        border-radius: 50%;
-        background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #fd79a8);
-        background-size: 400% 400%;
-        animation: gradientShift 3s ease infinite, rotate 8s linear infinite;
-        z-index: -1;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border: 3px solid transparent;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #fd79a8);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite, rotate 8s linear infinite;
+            z-index: -1;
         }
 
         .photo-glow {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 120%;
-        height: 120%;
-        background: radial-gradient(circle, rgba(255, 107, 107, 0.3) 0%, transparent 70%);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        animation: pulse 2s ease-in-out infinite alternate;
-        z-index: -1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255, 107, 107, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 2s ease-in-out infinite alternate;
+            z-index: -1;
         }
 
         .showcase-message {
-        font-size: 1.3rem;
-        font-weight: 600;
-        color: #333;
-        margin-top: 20px;
-        background: rgba(255, 255, 255, 0.9);
-        padding: 15px 30px;
-        border-radius: 25px;
-        display: inline-block;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 30px;
+            border-radius: 25px;
+            display: inline-block;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
         @keyframes photoGlow {
-        0% {
-            box-shadow: 0 20px 60px rgba(255, 107, 107, 0.3);
-        }
-        100% {
-            box-shadow: 0 25px 80px rgba(78, 205, 196, 0.4);
-        }
+            0% {
+                box-shadow: 0 20px 60px rgba(255, 107, 107, 0.3);
+            }
+            100% {
+                box-shadow: 0 25px 80px rgba(78, 205, 196, 0.4);
+            }
         }
 
         @keyframes rotate {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         @keyframes pulse {
-        0% {
-            opacity: 0.7;
-            transform: translate(-50%, -50%) scale(1);
-        }
-        100% {
-            opacity: 0.3;
-            transform: translate(-50%, -50%) scale(1.2);
-        }
+            0% {
+                opacity: 0.7;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0.3;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
         }
 
         @keyframes photoFloat {
-        0% {
-            transform: translateY(0px) rotate(0deg);
-        }
-        100% {
-            transform: translateY(-15px) rotate(2deg);
-        }
-        }
-
-        @keyframes photoSpin {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-15px) rotate(2deg);
+            }
         }
 
         @keyframes photoWobble {
-        0%, 100% {
-            transform: rotate(0deg);
-        }
-        25% {
-            transform: rotate(3deg);
-        }
-        75% {
-            transform: rotate(-3deg);
-        }
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(3deg);
+            }
+            75% {
+                transform: rotate(-3deg);
+            }
         }
 
         @keyframes photoPulse {
-        0%, 100% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.05);
-        }
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         .message-section {
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 20px;
-        padding: 30px;
-        margin: 30px 0;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        position: relative;
-        z-index: 2;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
         }
 
         .love-message {
-        font-size: 1.2rem;
-        line-height: 1.8;
-        color: #333;
-        text-align: center;
-        margin-bottom: 20px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         .concert-info {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 25px;
-        border-radius: 20px;
-        text-align: center;
-        margin: 20px 0;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        position: relative;
-        overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
         .concert-info::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        animation: concertShine 3s infinite;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: concertShine 3s infinite;
         }
 
         @keyframes concertShine {
-        0% {
-            left: -100%;
-        }
-        100% {
-            left: 100%;
-        }
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
         }
 
         .concert-title {
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 10px;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
         .concert-details {
-        font-size: 1.1rem;
-        opacity: 0.9;
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
 
         .music-controls {
-        text-align: center;
-        margin: 30px 0;
-        position: relative;
-        z-index: 2;
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+            z-index: 2;
         }
 
         .play-button {
-        background: linear-gradient(45deg, #ff6b6b, #fd79a8);
-        border: none;
-        border-radius: 50%;
-        width: 80px;
-        height: 80px;
-        color: white;
-        font-size: 2rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        position: relative;
-        overflow: hidden;
+            background: linear-gradient(45deg, #ff6b6b, #fd79a8);
+            border: none;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
         .play-button:hover {
-        transform: scale(1.1);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transform: scale(1.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
         .play-button::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        transition: all 0.3s ease;
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
         }
 
         .play-button:active::before {
-        width: 100%;
-        height: 100%;
+            width: 100%;
+            height: 100%;
         }
 
         .music-note {
-        font-size: 1rem;
-        margin-top: 10px;
-        color: #666;
+            font-size: 1rem;
+            margin-top: 10px;
+            color: #666;
         }
 
         .celebration-emoji {
-        font-size: 3rem;
-        display: inline-block;
-        animation: spin 2s linear infinite;
-        margin: 0 10px;
+            font-size: 3rem;
+            display: inline-block;
+            animation: spin 2s linear infinite;
+            margin: 0 10px;
         }
 
         @keyframes spin {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .floating-hearts {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
         }
 
         .heart {
-        position: absolute;
-        font-size: 2rem;
-        color: #ff6b6b;
-        animation: floatUp 4s infinite ease-in-out;
-        opacity: 0;
+            position: absolute;
+            font-size: 2rem;
+            color: #ff6b6b;
+            animation: floatUp 4s infinite ease-in-out;
+            opacity: 0;
         }
 
         @keyframes floatUp {
-        0% {
-            transform: translateY(100vh) rotate(0deg);
-            opacity: 0;
-        }
-        10% {
-            opacity: 1;
-        }
-        90% {
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-100px) rotate(360deg);
-            opacity: 0;
-        }
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         .signature {
-        font-size: 1.5rem;
-        font-weight: 600;
-        text-align: center;
-        color: #333;
-        margin-top: 30px;
-        position: relative;
-        z-index: 2;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            color: #333;
+            margin-top: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Fallback for video not loading */
+        .video-fallback {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #ff6b6b, #fd79a8);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
         }
 
         @media (max-width: 768px) {
-        .main-title {
-            font-size: 2.5rem;
-        }
-        .birthday-card {
-            padding: 20px;
-        }
-        .photo-grid {
-            grid-template-columns: 1fr;
-        }
-        
-    /* Add this to fix the Birthday Queen section layout */
-    .birthday-girl-showcase {
-        grid-column: 1 / -1; /* Make it span all columns */
-        width: 100%;
-        margin: 40px 0;
-        clear: both; /* Ensure it clears any floating elements */
-        display: block; /* Force block display */
-    }
-
+            .main-title {
+                font-size: 2.5rem;
+            }
+            .birthday-card {
+                padding: 20px;
+            }
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Fix the Birthday Queen section layout */
+            .birthday-girl-showcase {
+                grid-column: 1 / -1; /* Make it span all columns */
+                width: 100%;
+                margin: 40px 0;
+                clear: both; /* Ensure it clears any floating elements */
+                display: block; /* Force block display */
+            }
+            
+            .enhanced-photo-frame {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .concert-title {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -610,6 +624,7 @@
                 <div class="video-frame" id="video1">
                     <video autoplay muted loop playsinline>
                         <source src="images/memory-video-1.mp4" type="video/mp4">
+                        <div class="video-fallback">Beautiful Memories Video</div>
                     </video>
                     <div class="video-overlay">You're so Beautiful! 🎬</div>
                 </div>
@@ -640,14 +655,16 @@
                     </div>
                     <div class="slideshow-overlay">Good times 💕</div>
                     <div class="slideshow-controls">
-                        <button class="slide-btn prev" onclick="changeSlide(-1)">❮</button>
-                        <button class="slide-btn next" onclick="changeSlide(1)">❯</button>
+                        <button class="slide-btn prev" onclick="changeSlide(-1)" aria-label="Previous slide">❮</button>
+                        <button class="slide-btn next" onclick="changeSlide(1)" aria-label="Next slide">❯</button>
                     </div>
                 </div>
 
-                <div class="video-frame" id="video2">
-                    <video autoplay muted loop playsinline>
+                <div class="video-frame id=video2">
+                    <!-- Fixed video element with error handling -->
+                    <video autoplay muted loop playsinline id="concertVideo">
                         <source src="images/snap-avatar-kiss.mp4" type="video/mp4">
+                        <div class="video-fallback">Concert Excitement Video</div>
                     </video>
                     <div class="video-overlay">Concert Excitement! 🎤</div>
                 </div>
@@ -682,7 +699,7 @@
             </div>
 
             <div class="music-controls">
-                <button class="play-button" onclick="toggleMusic()" id="playBtn">▶️</button>
+                <button class="play-button" onclick="toggleMusic()" id="playBtn" aria-label="Play birthday music">▶️</button>
                 <div class="music-note">
                     🎵 Click to play your birthday song! 🎵
                 </div>
@@ -704,34 +721,34 @@
     <script>
         // Create floating sparkles
         function createSparkles() {
-        const sparklesContainer = document.getElementById('sparkles');
-        for (let i = 0; i < 15; i++) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = Math.random() * 100 + '%';
-            sparkle.style.top = Math.random() * 100 + '%';
-            sparkle.style.width = Math.random() * 6 + 2 + 'px';
-            sparkle.style.height = sparkle.style.width;
-            sparkle.style.animationDelay = Math.random() * 3 + 's';
-            sparklesContainer.appendChild(sparkle);
-        }
+            const sparklesContainer = document.getElementById('sparkles');
+            for (let i = 0; i < 15; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.width = Math.random() * 6 + 2 + 'px';
+                sparkle.style.height = sparkle.style.width;
+                sparkle.style.animationDelay = Math.random() * 3 + 's';
+                sparklesContainer.appendChild(sparkle);
+            }
         }
 
         // Create floating hearts
         function createFloatingHearts() {
-        const heartsContainer = document.getElementById('floating-hearts');
-        setInterval(() => {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = '💖';
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
-            heartsContainer.appendChild(heart);
+            const heartsContainer = document.getElementById('floating-hearts');
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                heartsContainer.appendChild(heart);
 
-            setTimeout(() => {
-                heart.remove();
-            }, 7000);
-        }, 2000);
+                setTimeout(() => {
+                    heart.remove();
+                }, 7000);
+            }, 2000);
         }
 
         // Slideshow functionality
@@ -740,142 +757,162 @@
         const totalSlides = slides.length;
 
         function showSlide(index) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        slides[index].classList.add('active');
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
         }
 
         function changeSlide(direction) {
-        currentSlide += direction;
-        if (currentSlide >= totalSlides) currentSlide = 0;
-        if (currentSlide < 0) currentSlide = totalSlides - 1;
-        showSlide(currentSlide);
+            currentSlide += direction;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            showSlide(currentSlide);
         }
 
         // Auto-advance slideshow
         function startSlideshow() {
-        setInterval(() => {
-            changeSlide(1);
-        }, 4000); // Change slide every 4 seconds
+            setInterval(() => {
+                changeSlide(1);
+            }, 4000); // Change slide every 4 seconds
         }
 
         // Music control
         let isPlaying = false;
         function toggleMusic() {
-        const music = document.getElementById('birthdayMusic');
-        const playBtn = document.getElementById('playBtn');
+            const music = document.getElementById('birthdayMusic');
+            const playBtn = document.getElementById('playBtn');
 
-        if (isPlaying) {
-            music.pause();
-            playBtn.innerHTML = '▶️';
-            isPlaying = false;
-        } else {
-            music.play().catch(e => {
-                // Handle autoplay restrictions
-                alert('🎵 Click again to play music! (Browser autoplay restriction) 🎵');
-            });
-            playBtn.innerHTML = '⏸️';
-            isPlaying = true;
+            if (isPlaying) {
+                music.pause();
+                playBtn.innerHTML = '▶️';
+                isPlaying = false;
+            } else {
+                music.play().catch(e => {
+                    // Handle autoplay restrictions
+                    alert('🎵 Click again to play music! (Browser autoplay restriction) 🎵');
+                });
+                playBtn.innerHTML = '⏸️';
+                isPlaying = true;
+            }
         }
+
+        // Video error handling
+        function handleVideoErrors() {
+            const video2 = document.getElementById('concertVideo');
+            
+            video2.addEventListener('error', function() {
+                // Create fallback content if video fails to load
+                const videoParent = video2.parentElement;
+                const fallback = document.createElement('div');
+                fallback.className = 'video-fallback';
+                fallback.innerHTML = 'Concert Excitement!<br>🎤 Brett Young 🎤';
+                
+                // Replace video with fallback
+                videoParent.replaceChild(fallback, video2);
+            });
         }
 
         // Initialize effects
         document.addEventListener('DOMContentLoaded', function() {
-        createSparkles();
-        createFloatingHearts();
-        startSlideshow();
+            createSparkles();
+            createFloatingHearts();
+            startSlideshow();
+            handleVideoErrors();
 
-        // Add some random celebration effects
-        setTimeout(() => {
-            if (confirm('🎉 Ready for a birthday surprise? 🎉')) {
-                document.body.style.animation = 'gradientShift 2s ease infinite';
-            }
-        }, 2000);
+            // Add some random celebration effects
+            setTimeout(() => {
+                if (confirm('🎉 Ready for a birthday surprise? 🎉')) {
+                    document.body.style.animation = 'gradientShift 2s ease infinite';
+                }
+            }, 2000);
         });
 
         // Add click effects with confetti
         document.addEventListener('click', function(e) {
-        // Create ripple effect
-        const ripple = document.createElement('div');
-        ripple.style.position = 'fixed';
-        ripple.style.left = e.clientX + 'px';
-        ripple.style.top = e.clientY + 'px';
-        ripple.style.width = '20px';
-        ripple.style.height = '20px';
-        ripple.style.background = '#ff6b6b';
-        ripple.style.borderRadius = '50%';
-        ripple.style.transform = 'translate(-50%, -50%)';
-        ripple.style.animation = 'rippleEffect 0.6s ease-out';
-        ripple.style.pointerEvents = 'none';
-        ripple.style.zIndex = '9999';
+            // Create ripple effect
+            const ripple = document.createElement('div');
+            ripple.style.position = 'fixed';
+            ripple.style.left = e.clientX + 'px';
+            ripple.style.top = e.clientY + 'px';
+            ripple.style.width = '20px';
+            ripple.style.height = '20px';
+            ripple.style.background = '#ff6b6b';
+            ripple.style.borderRadius = '50%';
+            ripple.style.transform = 'translate(-50%, -50%)';
+            ripple.style.animation = 'rippleEffect 0.6s ease-out';
+            ripple.style.pointerEvents = 'none';
+            ripple.style.zIndex = '9999';
 
-        document.body.appendChild(ripple);
+            document.body.appendChild(ripple);
 
-        // Create confetti explosion
-        createConfetti(e.clientX, e.clientY);
+            // Create confetti explosion
+            createConfetti(e.clientX, e.clientY);
 
-        setTimeout(() => {
-            ripple.remove();
-        }, 600);
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
         });
 
         // Confetti creation function
         function createConfetti(x, y) {
-        const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#fd79a8', '#a8e6cf', '#dda0dd'];
-        const shapes = ['🎉', '🎊', '⭐', '💖', '🎈', '🌟', '✨', '💫'];
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#fd79a8', '#a8e6cf', '#dda0dd'];
+            const shapes = ['🎉', '🎊', '⭐', '💖', '🎈', '🌟', '✨', '💫'];
 
-        for (let i = 0; i < 20; i++) {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti-piece';
+            for (let i = 0; i < 20; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti-piece';
 
-            // Random shape or color square
-            if (Math.random() > 0.5) {
-                confetti.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
-                confetti.style.fontSize = Math.random() * 15 + 10 + 'px';
-            } else {
-                confetti.style.width = Math.random() * 8 + 4 + 'px';
-                confetti.style.height = confetti.style.width;
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.borderRadius = Math.random() > 0.5 ? '50%': '0';
+                // Random shape or color square
+                if (Math.random() > 0.5) {
+                    confetti.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
+                    confetti.style.fontSize = Math.random() * 15 + 10 + 'px';
+                } else {
+                    confetti.style.width = Math.random() * 8 + 4 + 'px';
+                    confetti.style.height = confetti.style.width;
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%': '0';
+                }
+
+                confetti.style.left = x + (Math.random() - 0.5) * 100 + 'px';
+                confetti.style.top = y + 'px';
+                confetti.style.animation = `confettiFall ${Math.random() * 2 + 2}s linear forwards`;
+                confetti.style.left = x + (Math.random() - 0.5) * 100 + 'px';
+                confetti.style.top = y + 'px';
+                confetti.style.animation = `confettiFall ${Math.random() * 2 + 2}s linear forwards`;
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+                document.body.appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 4000);
             }
-
-            confetti.style.left = x + (Math.random() - 0.5) * 100 + 'px';
-            confetti.style.top = y + 'px';
-            confetti.style.animation = `confettiFall ${Math.random() * 2 + 2}s linear forwards`;
-            confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-
-            document.body.appendChild(confetti);
-
-            setTimeout(() => {
-                confetti.remove();
-            }, 4000);
-        }
         }
 
         // Add ripple effect keyframes
         const style = document.createElement('style');
         style.textContent = `
         @keyframes rippleEffect {
-        to {
-            transform: translate(-50%, -50%) scale(4);
-            opacity: 0;
-        }
+            to {
+                transform: translate(-50%, -50%) scale(4);
+                opacity: 0;
+            }
         }
 
         .confetti-piece {
-        position: fixed;
-        pointer-events: none;
-        z-index: 10000;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
         }
 
         @keyframes confettiFall {
-        0% {
-            transform: translateY(-100vh) rotate(0deg);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(100vh) rotate(720deg);
-            opacity: 0;
-        }
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
         }
         `;
         document.head.appendChild(style);
