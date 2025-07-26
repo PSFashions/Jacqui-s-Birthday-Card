@@ -129,14 +129,15 @@
 
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin: 30px 0;
             position: relative;
             z-index: 2;
         }
 
-        .video-frame, .slideshow-frame, .photo-placeholder {
+        .video-frame,
+        .slideshow-frame {
             border-radius: 20px;
             height: 250px;
             position: relative;
@@ -153,11 +154,19 @@
             font-weight: bold;
         }
 
+        .video-frame video,
+        .video-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         .video-frame:nth-child(1) {
             animation: photoFloat 4s ease-in-out infinite alternate, photoSpin 8s linear infinite;
         }
 
-        .slideshow-frame:nth-child(2) {
+        .slideshow-frame {
             animation: photoFloat 4s ease-in-out infinite alternate 1s, photoWobble 3s ease-in-out infinite;
         }
 
@@ -165,19 +174,13 @@
             animation: photoFloat 4s ease-in-out infinite alternate 2s, photoPulse 2s ease-in-out infinite;
         }
 
-        .video-frame:hover, .slideshow-frame:hover, .photo-placeholder:hover {
+        .video-frame:hover, .slideshow-frame:hover {
             transform: translateY(-10px) scale(1.05);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
             animation-play-state: paused;
         }
 
-        .video-frame video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .video-overlay, .slideshow-overlay, .photo-overlay {
+        .video-overlay, .slideshow-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -192,8 +195,7 @@
         }
 
         .video-frame:hover .video-overlay,
-        .slideshow-frame:hover .slideshow-overlay,
-        .photo-placeholder:hover .photo-overlay {
+        .slideshow-frame:hover .slideshow-overlay {
             transform: translateY(0);
         }
 
@@ -767,40 +769,18 @@
             z-index: 2;
         }
 
-        /* Missing CSS animations for confetti and ripple effects */
-        @keyframes rippleEffect {
-            to {
-                transform: translate(-50%, -50%) scale(4);
-                opacity: 0;
+        /* Responsive */
+        @media (max-width: 900px) {
+            .photo-grid {
+                grid-template-columns: 1fr;
             }
         }
-
-        .confetti-piece {
-            position: fixed;
-            pointer-events: none;
-            z-index: 10000;
-        }
-
-        @keyframes confettiFall {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
         @media (max-width: 768px) {
             .main-title {
                 font-size: 2.5rem;
             }
             .birthday-card {
                 padding: 20px;
-            }
-            .photo-grid {
-                grid-template-columns: 1fr;
             }
             .enhanced-photo-frame {
                 width: 250px;
@@ -822,15 +802,16 @@
                 <span class="celebration-emoji">🎂</span>
             </div>
 
-           <div class="photo-grid">
-                <div class="video-frame" id="video2">
+            <div class="photo-grid">
+                <!-- 1st: Video -->
+                <div class="video-frame" id="video1">
                     <video autoplay muted loop playsinline>
-                        <source src="images/spin.mp4" type="video/mp4">
-                        <div class="video-fallback">Beautiful Memories Video</div>
+                        <source src="images/memory-video-1.mp4" type="video/mp4">
+                        <div class="video-fallback">Your memories video</div>
                     </video>
-                    <div class="video-overlay">You're so Beautiful! 🎬✨</div>
+                    <div class="video-overlay">Beautiful Memories 🎬✨</div>
                 </div>
-                
+                <!-- 2nd: Slideshow -->
                 <div class="slideshow-frame" id="slideshow">
                     <div class="slideshow-container">
                         <div class="slide active">
@@ -861,16 +842,15 @@
                         <button class="slide-btn next" onclick="changeSlide(1)">❯</button>
                     </div>
                 </div>
-
-                <div class="photo-grid">
-                <div class="video-frame" id="video1">
+                <!-- 3rd: Video -->
+                <div class="video-frame" id="video3">
                     <video autoplay muted loop playsinline>
-                        <source src="images/tennessee.jpj" type="img">
-                        <div class="video-fallback">Beautiful Memories Video</div>
+                        <source src="images/spin.mp4" type="video/mp4">
+                        <div class="video-fallback">Spin Video</div>
                     </video>
-                    <div class="video-overlay">You're so Beautiful! 🎬✨</div>
+                    <div class="video-overlay">Spinning Love! 🎬✨</div>
                 </div>
-                
+            </div>
 
             <!-- Enhanced Jacqui Photo Showcase -->
             <div class="birthday-girl-showcase">
@@ -885,7 +865,7 @@
 
             <div class="message-section">
                 <div class="love-message">
-                    💖 Eight months with you has shown me that you are all that matters, you deserve all the love I can give. I can't wait to make more amazing memories together- beginning with your birthday. 💖
+                    💖 Eight months with you has shown me that you are all that matters, you deserve all the love I can give. I can't wait to make more amazing memories together- beginning with your[...]
                 </div>
 
                 <div class="concert-info">
@@ -943,6 +923,7 @@
         </div>
     </div>
 
+    <!-- SCRIPTS -->
     <script>
         // Create floating sparkles
         function createSparkles() {
@@ -978,157 +959,60 @@
 
         // Slideshow functionality
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-
+        let slideInterval;
         function showSlide(index) {
+            const slides = document.querySelectorAll('.slide');
             slides.forEach(slide => slide.classList.remove('active'));
             slides[index].classList.add('active');
         }
 
         function changeSlide(direction) {
+            const slides = document.querySelectorAll('.slide');
             currentSlide += direction;
-            if (currentSlide >= totalSlides) currentSlide = 0;
-            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
             showSlide(currentSlide);
         }
 
-        // Auto-advance slideshow
         function startSlideshow() {
-            setInterval(() => {
+            slideInterval = setInterval(() => {
                 changeSlide(1);
-            }, 4000); // Change slide every 4 seconds
+            }, 4000);
         }
 
-        // Music control - Fixed to work without actual audio file
-        let isPlaying = false;
-        function toggleMusic() {
-            const playBtn = document.getElementById('playBtn');
-            
-            if (isPlaying) {
-                playBtn.innerHTML = '▶️';
-                isPlaying = false;
-                alert('🎵 Music paused! (No audio file loaded) 🎵');
-            } else {
-                playBtn.innerHTML = '⏸️';
-                isPlaying = true;
-                alert('🎵 Playing birthday music! (Add your favorite song file) 🎵');
-            }
-        }
-
-        // Special Surprise Popup Functions
+        // Surprise popup
         function openSurprise() {
-            const popup = document.getElementById('surprisePopup');
-            popup.classList.add('show');
-            createPopupHearts();
-            
-            // Create extra celebration confetti
-            setTimeout(() => {
-                createConfetti(window.innerWidth / 2, window.innerHeight / 2);
-            }, 500);
-            
-            setTimeout(() => {
-                createConfetti(window.innerWidth / 3, window.innerHeight / 3);
-            }, 800);
-            
-            setTimeout(() => {
-                createConfetti(window.innerWidth * 2/3, window.innerHeight / 3);
-            }, 1100);
+            document.getElementById('surprisePopup').classList.add('show');
         }
-
         function closeSurprise() {
-            const popup = document.getElementById('surprisePopup');
-            popup.classList.remove('show');
+            document.getElementById('surprisePopup').classList.remove('show');
         }
 
-        function createPopupHearts() {
-            const heartsContainer = document.getElementById('popupHearts');
-            heartsContainer.innerHTML = ''; // Clear existing hearts
-            
-            for (let i = 0; i < 12; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'popup-heart';
-                heart.innerHTML = ['💖', '💕', '💗', '💘'][Math.floor(Math.random() * 4)];
-                heart.style.left = Math.random() * 100 + '%';
-                heart.style.top = Math.random() * 100 + '%';
-                heart.style.animationDelay = Math.random() * 2 + 's';
-                heartsContainer.appendChild(heart);
+        // Music
+        let musicPlaying = false;
+        let birthdayAudio;
+        function toggleMusic() {
+            if (!birthdayAudio) {
+                birthdayAudio = new Audio('images/birthday-song.mp3'); // Make sure the song exists
+                birthdayAudio.loop = true;
             }
+            if (musicPlaying) {
+                birthdayAudio.pause();
+                document.getElementById('playBtn').textContent = '▶️';
+            } else {
+                birthdayAudio.play();
+                document.getElementById('playBtn').textContent = '⏸️';
+            }
+            musicPlaying = !musicPlaying;
         }
 
-        // Initialize effects
-        document.addEventListener('DOMContentLoaded', function() {
+        // DOMContentLoaded events
+        document.addEventListener('DOMContentLoaded', () => {
             createSparkles();
             createFloatingHearts();
+            showSlide(currentSlide);
             startSlideshow();
-
-            // Add some random celebration effects
-            setTimeout(() => {
-                createConfetti(window.innerWidth / 2, window.innerHeight / 2);
-            }, 2000);
         });
-
-        // Add click effects with confetti
-        document.addEventListener('click', function(e) {
-            // Create ripple effect
-            const ripple = document.createElement('div');
-            ripple.style.position = 'fixed';
-            ripple.style.left = e.clientX + 'px';
-            ripple.style.top = e.clientY + 'px';
-            ripple.style.width = '20px';
-            ripple.style.height = '20px';
-            ripple.style.background = '#ff6b6b';
-            ripple.style.borderRadius = '50%';
-            ripple.style.transform = 'translate(-50%, -50%)';
-            ripple.style.animation = 'rippleEffect 0.6s ease-out';
-            ripple.style.pointerEvents = 'none';
-            ripple.style.zIndex = '9999';
-
-            document.body.appendChild(ripple);
-
-            // Create confetti explosion
-            createConfetti(e.clientX, e.clientY);
-
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
-
-        // Confetti creation function
-        function createConfetti(x, y) {
-            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#fd79a8', '#a8e6cf', '#dda0dd'];
-            const shapes = ['🎉', '🎊', '⭐', '💖', '🎈', '🌟', '✨', '💫'];
-
-            for (let i = 0; i < 20; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti-piece';
-
-                // Random shape or color square
-                if (Math.random() > 0.5) {
-                    confetti.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
-                    confetti.style.fontSize = Math.random() * 15 + 10 + 'px';
-                } else {
-                    confetti.style.width = Math.random() * 8 + 4 + 'px';
-                    confetti.style.height = confetti.style.width;
-                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-                }
-
-                confetti.style.position = 'fixed';
-                confetti.style.left = x + (Math.random() - 0.5) * 100 + 'px';
-                confetti.style.top = y + 'px';
-                confetti.style.animation = `confettiFall ${Math.random() * 2 + 2}s linear forwards`;
-                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-                confetti.style.pointerEvents = 'none';
-                confetti.style.zIndex = '10000';
-
-                document.body.appendChild(confetti);
-
-                setTimeout(() => {
-                    confetti.remove();
-                }, 4000);
-            }
-        }
     </script>
 </body>
 </html>
