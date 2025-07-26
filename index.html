@@ -138,34 +138,224 @@
         z-index: 2;
         }
 
-        .photo-placeholder {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .video-frame, .slideshow-frame {
         border-radius: 20px;
-        height: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: 600;
-        text-align: center;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        cursor: pointer;
+        height: 250px;
         position: relative;
         overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s ease;
         animation: photoFloat 4s ease-in-out infinite alternate;
         }
 
-        .photo-placeholder:nth-child(1) {
+        .video-frame:nth-child(1) {
         animation: photoFloat 4s ease-in-out infinite alternate, photoSpin 8s linear infinite;
         }
 
-        .photo-placeholder:nth-child(2) {
+        .slideshow-frame:nth-child(2) {
         animation: photoFloat 4s ease-in-out infinite alternate 1s, photoWobble 3s ease-in-out infinite;
         }
 
-        .photo-placeholder:nth-child(3) {
+        .video-frame:nth-child(3) {
         animation: photoFloat 4s ease-in-out infinite alternate 2s, photoPulse 2s ease-in-out infinite;
+        }
+
+        .video-frame:hover, .slideshow-frame:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        animation-play-state: paused;
+        }
+
+        .video-frame video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        }
+
+        .video-overlay, .slideshow-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: white;
+        padding: 15px;
+        font-weight: 600;
+        text-align: center;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        }
+
+        .video-frame:hover .video-overlay,
+        .slideshow-frame:hover .slideshow-overlay {
+        transform: translateY(0);
+        }
+
+        .slideshow-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        }
+
+        .slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide.active {
+        opacity: 1;
+        }
+
+        .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        }
+
+        .slideshow-controls {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 15px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        }
+
+        .slideshow-frame:hover .slideshow-controls {
+        opacity: 1;
+        }
+
+        .slide-btn {
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        }
+
+        .slide-btn:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: scale(1.1);
+        }
+
+        .birthday-girl-showcase {
+        text-align: center;
+        margin: 40px 0;
+        position: relative;
+        z-index: 2;
+        }
+
+        .showcase-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #fd79a8);
+        background-size: 400% 400%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradientShift 3s ease infinite;
+        margin-bottom: 20px;
+        }
+
+        .enhanced-photo-frame {
+        position: relative;
+        display: inline-block;
+        border-radius: 50%;
+        overflow: hidden;
+        width: 300px;
+        height: 300px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: photoGlow 3s ease-in-out infinite alternate;
+        }
+
+        .birthday-girl-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+        }
+
+        .enhanced-photo-frame:hover .birthday-girl-photo {
+        transform: scale(1.1);
+        }
+
+        .photo-effects {
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
+        border: 3px solid transparent;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #fd79a8);
+        background-size: 400% 400%;
+        animation: gradientShift 3s ease infinite, rotate 8s linear infinite;
+        z-index: -1;
+        }
+
+        .photo-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 120%;
+        height: 120%;
+        background: radial-gradient(circle, rgba(255, 107, 107, 0.3) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        animation: pulse 2s ease-in-out infinite alternate;
+        z-index: -1;
+        }
+
+        .showcase-message {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #333;
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 15px 30px;
+        border-radius: 25px;
+        display: inline-block;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes photoGlow {
+        0% {
+            box-shadow: 0 20px 60px rgba(255, 107, 107, 0.3);
+        }
+        100% {
+            box-shadow: 0 25px 80px rgba(78, 205, 196, 0.4);
+        }
+        }
+
+        @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+        }
+
+        @keyframes pulse {
+        0% {
+            opacity: 0.7;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        100% {
+            opacity: 0.3;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
         }
 
         @keyframes photoFloat {
@@ -204,39 +394,6 @@
         }
         50% {
             transform: scale(1.05);
-        }
-        }
-
-        .photo-placeholder:hover {
-        transform: translateY(-10px) scale(1.05) rotate(5deg);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        animation-play-state: paused;
-        }
-
-        .photo-placeholder::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-        transform: rotate(45deg);
-        transition: all 0.6s;
-        opacity: 0;
-        }
-
-        .photo-placeholder:hover::before {
-        animation: shimmer 0.6s ease-in-out;
-        opacity: 1;
-        }
-
-        @keyframes shimmer {
-        0% {
-            transform: translateX(-100%) translateY(-100%) rotate(45deg);
-        }
-        100% {
-            transform: translateX(100%) translateY(100%) rotate(45deg);
         }
         }
 
@@ -435,38 +592,83 @@
             <h1 class="main-title">Happy Birthday Jacqui!</h1>
             <div class="subtitle">
                 <span class="celebration-emoji">🎉</span>
-                Another year of amazing adventures together!
+                I will do anything to make your birthday special- not just today, but every day!<br>
                 <span class="celebration-emoji">🎂</span>
             </div>
 
             <div class="photo-grid">
-                <div class="photo-placeholder" onclick="showPhotoMessage(1)">
-                    📸 Our Favorite Memory<br>
-                    <small>(Drop your photo link here!)</small>
+                <div class="video-frame" id="video1">
+                    <video autoplay muted loop playsinline>
+                        <source src="images/memory-video-1.mp4" type="video/mp4">
+                        <div class="video-fallback">📹 Amazing Memory!</div>
+                    </video>
+                    <div class="video-overlay">You're so Beautiful! 🎬</div>
                 </div>
-                <div class="photo-placeholder" onclick="showPhotoMessage(2)">
-                    💕 Us Together<br>
-                    <small>(Perfect couple photo spot!)</small>
+                
+                <div class="slideshow-frame" id="slideshow">
+                    <div class="slideshow-container">
+                        <div class="slide active">
+                            <img src="images/FB_IMG_1744189271457.jpg" alt="Beautiful Memory">
+                        </div>
+                        <div class="slide">
+                            <img src="images/FB_IMG_1744189284238.jpg" alt="Sweet Moment">
+                        </div>
+                        <div class="slide">
+                            <img src="images/FB_IMG_1744189344538.jpg" alt="Perfect Day">
+                        </div>
+                        <div class="slide">
+                            <img src="images/1000002147-removebg-preview.png" alt="Special Memory">
+                        </div>
+                        <div class="slide">
+                            <img src="images/messenger-photo-1.jpg" alt="Happy Times">
+                        </div>
+                        <div class="slide">
+                            <img src="images/Messenger_creation_DE870316-977D-4A10-A53E-99D3725FC42C.jpeg" alt="Love Story">
+                        </div>
+                        <div class="slide">
+                            <img src="images/snapchat-photo-1.jpg" alt="Fun Moments">
+                        </div>
+                    </div>
+                    <div class="slideshow-overlay">Good times 💕</div>
+                    <div class="slideshow-controls">
+                        <button class="slide-btn prev" onclick="changeSlide(-1)">❮</button>
+                        <button class="slide-btn next" onclick="changeSlide(1)">❯</button>
+                    </div>
                 </div>
-                <div class="photo-placeholder" onclick="showPhotoMessage(3)">
-                    🎵 Concert Ready!<br>
-                    <small>(Brett Young excitement!)</small>
+
+                <div class="video-frame" id="video2">
+                    <video autoplay muted loop playsinline>
+                        <source src="images/concert-video.mp4" type="video/mp4">
+                        <div class="video-fallback">🎉 Birthday Fun!</div>
+                    </video>
+                    <div class="video-overlay">Concert Excitement! 🎤</div>
                 </div>
+            </div>
+
+            <!-- Enhanced Jacqui Photo Showcase -->
+            <div class="birthday-girl-showcase">
+                <div class="showcase-title">✨ The Birthday Queen ✨</div>
+                <div class="enhanced-photo-frame">
+                    <div class="photo-effects"></div>
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAC8AQkDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD38KAAAKAAAAA" alt="Beautiful Jacqui" class="birthday-girl-photo">
+                    <div class="photo-glow"></div>
+                </div>
+                <div class="showcase-message">The most amazing girlfriend in the world! I Love You! 🌟</div>
             </div>
 
             <div class="message-section">
                 <div class="love-message">
-                    💖 Eight incredible months with you have been absolutely magical! Every day with you feels like a celebration, and I can't wait to make more amazing memories together. You bring so much joy, laughter, and love into my life! 💖
+                    💖 Eight months with you has shown me that you are all that matters, you deserve all the love I can give. I can't wait to make more amazing memories together- begining with your birthday. 💖
                 </div>
 
                 <div class="concert-info">
                     <div class="concert-title">
-                        🎤 Brett Young Concert! 🎤
+                        🎤We're ringing in your special day together; seeing Brett Young in Concert! 🎤
                     </div>
                     <div class="concert-details">
                         Hard Rock Casino Cincinnati<br>
-                        Get ready for an unforgettable night of music!<br>
-                        🎵 This is going to be AMAZING! 🎵
+                        Yes, a Casino, but I bet we don't lose any money.<br>
+                        🎵 It is going to be AMAZING! 🎵
                     </div>
                 </div>
             </div>
@@ -480,7 +682,7 @@
 
             <div class="signature">
                 With all my love,<br>
-                Your boyfriend who adores you ❤️
+                Your boyfriend who adores you, Loves you, and can't wait to celebrate so many more of your birthdays with you!❤️
             </div>
         </div>
     </div>
@@ -524,6 +726,30 @@
         }, 2000);
         }
 
+        // Slideshow functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+        }
+
+        function changeSlide(direction) {
+        currentSlide += direction;
+        if (currentSlide >= totalSlides) currentSlide = 0;
+        if (currentSlide < 0) currentSlide = totalSlides - 1;
+        showSlide(currentSlide);
+        }
+
+        // Auto-advance slideshow
+        function startSlideshow() {
+        setInterval(() => {
+            changeSlide(1);
+        }, 4000); // Change slide every 4 seconds
+        }
+
         // Music control
         let isPlaying = false;
         function toggleMusic() {
@@ -544,20 +770,11 @@
         }
         }
 
-        // Photo placeholder interaction
-        function showPhotoMessage(photoNum) {
-        const messages = [
-            "This is where our favorite memory will shine! ✨",
-            "The perfect spot for our cutest couple photo! 💕",
-            "Concert excitement captured forever! 🎤🎉"
-        ];
-        alert(messages[photoNum - 1]);
-        }
-
         // Initialize effects
         document.addEventListener('DOMContentLoaded', function() {
         createSparkles();
         createFloatingHearts();
+        startSlideshow();
 
         // Add some random celebration effects
         setTimeout(() => {
